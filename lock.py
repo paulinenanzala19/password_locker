@@ -22,6 +22,25 @@ class User:
       """  
       User.user_list.append(self)
 
+    @classmethod
+    def verify_user(cls,username,password):
+        """
+        method to verify whether the user is in our contact list or not
+        """
+        the_user=""
+        for user in user_list:
+            if(user.username=username and user.password=password):
+                the_user== user.username
+        return the_user
+
+    def delete_user(self):
+        """
+        method that removes a user from the user list
+        """
+        User.user_list.remove(self)
+
+
+
 class Credentials:
     """
     creating a class that generates new instances of credentials
