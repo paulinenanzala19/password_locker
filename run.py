@@ -20,3 +20,10 @@ def verify_users():
     Function that verifies incoming new users
     """
     user.verify_user()
+
+def login_new_user():
+    """
+    Function that check if a user exits and logs them in
+    """
+    login_user=user.User.verify_user(username,password)
+    return login_user
