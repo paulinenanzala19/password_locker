@@ -1,5 +1,6 @@
 import random
 import string
+import pyperclip
 
 class User:
     """
@@ -103,6 +104,12 @@ class Credentials:
         method that returns all items in the credential list
         """
         return cls.credentials_list
+
+    def generate_password(stringLength=8):
+        """
+        method to generate random passwords with a mixture of letters, digits and characters
+        """
+        password=string.ascii_lowercase + string.digits + string.ascii_uppercase + '@#$%^&*!~'
 
 
 
