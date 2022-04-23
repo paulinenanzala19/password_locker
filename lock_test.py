@@ -54,7 +54,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_save_credentials(self):
         """
-        test case to test if the credentials are saved in thee credential list
+        test case to test if the credentials are saved in the credential list
         """
         self.new_credential.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)

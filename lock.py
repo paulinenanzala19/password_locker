@@ -44,6 +44,18 @@ class Credentials:
         """
         Credentials.credentials_list.append(self)
 
+    @classmethod
+    def search_credential(cls,username)
+        """
+        method tht takes in the user name and returns credentials that matches the username
+        """
+
+        for credential in cls.credentials_list:
+            if credential.username==username
+                 return credential
+
+
+
 
 
 
