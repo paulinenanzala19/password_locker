@@ -59,6 +59,16 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)
 
+    def test_save_multiple_credentials(self):
+        """
+        test case to test if we can save multiple credential object to our credential list
+        """
+        self.new_credential.save_credentials()
+        test_credential= Credentials("instagram","paulananzala","Hybj76t6")
+        test_credential.save_credentials()
+        self.assertEqual(len(Credentials.credentials_list),2)
+        
+
     def test_search_credential(self):
         """
         test to find credential details using the username

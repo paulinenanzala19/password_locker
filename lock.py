@@ -44,6 +44,12 @@ class Credentials:
         """
         Credentials.credentials_list.append(self)
 
+    def save_multiple_credentials(self):
+        """
+        method that can save multiple credentials into the credential list
+        """
+        Credentials.credentials_list.append(self)
+
     @classmethod
     def search_credential(cls,username):
         """
