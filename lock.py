@@ -28,10 +28,10 @@ class User:
         """
         method to verify whether the user is in our contact list or not
         """
-        the_user=""
-        for user in user_list:
-            if(user.username=username and user.password=password):
-                the_user== user.username
+        the_user= ""
+        for user in User.user_list:
+            if(user.username==username and user.password==password):
+                 the_user == user.username
         return the_user
 
     def delete_user(self):
@@ -109,8 +109,14 @@ class Credentials:
         """
         method to generate random passwords with a mixture of letters, digits and characters
         """
-        password=string.ascii_lowercase + string.digits + string.ascii_uppercase + "@#$%^&*!~"
+        password = string.ascii_lowercase + string.digits + string.ascii_uppercase + "@#$%^&*!~"
         return ''.join(random.choice(password) for i in range(stringLength))
+
+
+    @classmethod
+    def copy_password(cls,username):
+        credential_found=Credentials.search_credential(username)
+        pyperclip.copy(credential_found.password)
 
 
 

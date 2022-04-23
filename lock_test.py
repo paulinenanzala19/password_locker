@@ -1,6 +1,7 @@
 import unittest
 from lock import User
 from lock import Credentials
+import pyperclip
 
 class TestClass(unittest.TestCase):
     """
@@ -113,6 +114,19 @@ class TestCredentials(unittest.TestCase):
         test that returns a list of all credentials saved
         """
         self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
+
+    def test_copy_password(self):
+        """
+        test to confirm we are copying password from the found credential
+        """
+        self.new_credential.save_credentials()
+        Credentials.copy_password("paulananzala")
+
+        self.assertEqual(self.new_credential.password, pyperclip.paste())
+
+
+    
+    
 
 
     
