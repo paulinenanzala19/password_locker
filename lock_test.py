@@ -84,8 +84,8 @@ class TestCredentials(unittest.TestCase):
 
         self.new_credential.delete_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)
-        
 
+    
     def test_search_credential(self):
         """
         test to find credential details using the username
@@ -96,6 +96,17 @@ class TestCredentials(unittest.TestCase):
 
         test_credential.search_credential("paulananzala")
         self.assertEqual(test_credential.username,test_credential.username)
+
+    def test_credential_exists(self):
+        """
+        test to find if the credential exist in the credential list
+        """
+        self.new_credential.save_credentials()
+        test_credential=Credentials("instagram","paulananzala","Hybj76t6")
+        test_credential.save_credentials()
+
+        credential_exists=Credentials.credential_exist("paulananzala")
+        self.assertTrue(credential_exists)
 
 
     
