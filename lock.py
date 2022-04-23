@@ -109,7 +109,8 @@ class Credentials:
         """
         method to generate random passwords with a mixture of letters, digits and characters
         """
-        password=string.ascii_lowercase + string.digits + string.ascii_uppercase + '@#$%^&*!~'
+        password=string.ascii_lowercase + string.digits + string.ascii_uppercase + "@#$%^&*!~"
+        return ''.join(random.choice(password) for i in range(stringLength))
 
 
 
