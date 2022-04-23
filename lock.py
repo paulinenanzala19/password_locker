@@ -29,7 +29,14 @@ class Credentials:
 
     credentials_list=[]
 
-    def __init__
+    def __init__(self,account,username,password):
+        """
+        method that defines properties of credentials
+        
+        """
+        self.account=account
+        self.username=username
+        self.password=password
 
 
 
