@@ -50,6 +50,12 @@ class Credentials:
         """
         Credentials.credentials_list.append(self)
 
+    def delete_credentials(self):
+        """
+        method that deletes a saved credential from credential list
+        """
+        Credentials.credentials_list.remove(self)
+
     @classmethod
     def search_credential(cls,username):
         """
