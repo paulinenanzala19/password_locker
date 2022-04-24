@@ -15,17 +15,17 @@ def save_users(user):
     """
     user.save_user()
 
-def verify_users():
+def verify_users(username,password):
     """
     Function that verifies incoming new users
     """
-    user.verify_user()
+    User.verify_user(username,password)
 
-def login_new_user():
+def login_new_user(username,password):
     """
     Function that check if a user exits and logs them in
     """
-    login_user=user.User.verify_user(username,password)
+    login_user=User.verify_user(username,password)
     return login_user
 
 def generate_new_credentials(account,username,password):
@@ -45,9 +45,9 @@ def display_new_credentials():
     """
     Function to display the new saved credentials
     """
-    Credentials.display_credentials()
+    return Credentials.display_credentials()
 
-def find_credentials():
+def find_credentials(username):
     """
     Function to display the if the account created matches with username and password
     """
@@ -103,10 +103,75 @@ def main():
             print("Invalid password try again")
 
 
-    save_users(create_user(username,password))
-    print("-"*30)
-    print(f"Hello {username}, your registration was successful! Your password is:{password} ")
-    print("-"*40)
+      save_users(create_user(username,password))
+      print("-"*30)
+      print(f"Hello {username}, your registration was successful! Your password is:{password} ")
+      print("-"*40)
+
+    elif short_code=="si":
+        print("-"*30)
+        print("Enter your username and password to sign in")
+        print("-"*30)
+        username=input("user_name: ")
+        password=input("password: ")
+        # sign_in =login_new_user(username,password)
+        # if login_new_user == sign_in:
+        print(f"hello {username} your log in was successful, welcome\n")
+    
+    while True:
+        print("NC- new credential\n DC- display credentials\n SC-search credentials\n  ")
+        short_code=input().lower().strip()
+        if short_code=="nc":
+           print("create new credentials")
+           print("-"*30)
+           print("Enter account name...")
+           account=input().lower().strip()
+           print ("Enter your username...")
+           username=input()
+           while True:
+               print("TP -type password\n GP-generate password\n")
+               password_selected=input().lower().strip()
+               if password_selected=="tp":
+                   password=input("Enter your password\n")
+                   break
+
+               elif password_selected=="gp":
+                   password=gen_random_password()
+                   break
+
+               else:
+                    print("invalid password")
+
+           save_new_credentials(generate_new_credentials(account,username,password))
+           print("\n")
+           print("Your credentials have been successfully saved\n")
+
+        elif short_code=="dc": 
+            if display_new_credentials():
+                print("This are your credentials")
+
+                for username in display_new_credentials():
+                    print(f"account: {username.account} \n username: {username.username} \n password: {password} \n saved successfully\n")
+            
+            else:
+                print("You dont have any saved credentials")
+
+        elif short_code=="sc":
+           print("Enter the username of the account you want to search for...")
+           find_name=input().lower().strip()
+           if find_credentials(username):
+               search_details=find_credentials(username)
+               print("-"*30)
+               print(f"Account: {search_details.account}\n userName: {search_details.username}\n password: {search_details.password}\n")
+
+           else:
+               print("The credential does not exist")
+    
+                  
+
+
+
+
 
     
 
