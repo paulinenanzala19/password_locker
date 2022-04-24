@@ -53,7 +53,7 @@ def find_credentials(username):
     """
     return Credentials.search_credential(username)
 
-def check_exist_credentials():
+def check_exist_credentials(username):
     """
     Function to display existing credentials
     """
@@ -119,7 +119,7 @@ def main():
         print(f"hello {username} your log in was successful, welcome\n")
     
     while True:
-        print("NC- new credential\n DC- display credentials\n SC-search credentials\n  ")
+        print("NC- new credential\n DC- display credentials\n SC-search credentials\n   TC-deleting credentials\n  GP-generate password\n EX-exit \n")
         short_code=input().lower().strip()
         if short_code=="nc":
            print("create new credentials")
@@ -157,29 +157,44 @@ def main():
                 print("You dont have any saved credentials")
 
         elif short_code=="sc":
-           print("Enter the username of the account you want to search for...")
-           find_name=input().lower().strip()
-           if find_credentials(username):
-               search_details=find_credentials(username)
-               print("-"*30)
-               print(f"Account: {search_details.account}\n userName: {search_details.username}\n password: {search_details.password}\n")
+            print("Enter the username of the account you want to search for...")
+            find_name=input().lower().strip()
+            if find_credentials(find_name):
+                search_details=find_credentials(find_name)
+                print("-"*30)
+                print(f"Account: {search_details.account}\n Username:{search_details.username}\n password: {search_details.password}")
 
-           else:
-               print("The credential does not exist")
-    
+            else:
+                print("The credential does not exist")
+        
+        elif short_code=="tc":
+            print("Enter the username of the account you want to delete....")
+            find_name=input().lower().strip()
+            if find_credentials(find_name):
+                search_details=find_credentials(find_name)
+                print("-"*30)
+                search_details.delete_credentials()
+                print("-"*40)
+                print(f"Your credentials for :\n {search_details.account} , {search_details.username} and {search_details.password} have been deleted successfully")
+            
+            else:
+                print("The credentials does not exist in the credential list")
+
+        elif short_code=="gp":
+            password=gen_random_password()
+            print(f"Your password has been generated successfully: {password}\n you can use or type your own password ")
+
+
+        elif short_code=="ex":
+            print("Its been a pleasure serving you. Until next time....bye!")
+            break
+
+        else:
+            print("The data you have entered is invalid please try again!")
+
+    else:
+        print("Credentials are invalid, please try again next time")
                   
-
-
-
-
-
-    
-
-
-
-
-
-
 
 if __name__ == '__main__':
 
