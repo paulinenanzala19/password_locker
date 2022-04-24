@@ -119,7 +119,7 @@ def main():
         print(f"hello {username} your log in was successful, welcome\n")
     
     while True:
-        print("NC- new credential\n DC- display credentials\n SC-search credentials\n   TC-deleting credentials\n  GP-generate password\n EX-exit \n")
+        print("NC- new credential\n DC- display credentials\n SC-search credentials\n   DD-deleting credentials\n  GP-generate password\n EX-exit \n")
         short_code=input().lower().strip()
         if short_code=="nc":
            print("create new credentials")
@@ -167,7 +167,7 @@ def main():
             else:
                 print("The credential does not exist")
         
-        elif short_code=="tc":
+        elif short_code=="dd":
             print("Enter the username of the account you want to delete....")
             find_name=input().lower().strip()
             if find_credentials(find_name):
